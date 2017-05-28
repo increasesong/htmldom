@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+td {
+	text-align: right;
+	height:28px;
+	padding:10px;
+}
+input{
+	height:28px;
+}
+</style>
+
+<script>
+function load(){
+	var tbEl = document.getElementById('mtbl');
+	var x=document.getElementById('a').value;	
+　	if(isNaN(x)){ 
+　　　alert("请输入数字"); 
+　　　return false;
+	} 
+	var n=Number(x);
+	while(tbEl.hasChildNodes()){
+		tbEl.removeChild(tbEl.lastChild);
+	}
+	for(var i = 1; i <= n; i++){
+		var trEl = document.createElement('tr');
+		
+		for(var k=1; k<= n-i ; k++){	
+			var tdEl = document.createElement('td');		
+			tdEl.innerHTML=' ';
+			trEl.appendChild(tdEl);	
+		}
+		
+		for(var j=1; j<= i; j++){
+			var tdEl = document.createElement('td');			
+			tdEl.innerHTML= i + 'x' + j + '=' + i*j ;
+			trEl.appendChild(tdEl);	
+		}
+		tbEl.appendChild(trEl);
+	}
+}
+</script>
+</head>
+
+<body>
+<h2>
+输入一个数: <input type="text" id="a">
+<input type="button" value="确认" onclick="load()">
+</h2>
+
+<table  id="mtbl"></table>
+</body>
+
+</html>
